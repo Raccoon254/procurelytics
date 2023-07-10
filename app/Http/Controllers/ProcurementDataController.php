@@ -17,7 +17,7 @@ class ProcurementDataController extends Controller
         return view('procurement.create', compact('categories', 'spendCategories'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         // Validate incoming request data
         $data = $request->validate([
@@ -54,6 +54,13 @@ class ProcurementDataController extends Controller
         // Redirect to a success page, or wherever you'd like
         return redirect('/procurement/success');
     }
+
+
+    public function show(ProcurementData $procurement): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        return view('procurement.show', compact('procurement'));
+    }
+
 
     // ...
 }

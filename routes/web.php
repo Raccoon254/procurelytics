@@ -38,3 +38,6 @@ Route::get('/procurement/', function () {
     return view('procurement.index');
 })->name('procurement-data');
 
+Route::get('/procurement/{procurement}', [ProcurementDataController::class, 'show'])->name('procurement.show');
+
+
