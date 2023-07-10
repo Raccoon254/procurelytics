@@ -46,6 +46,8 @@ class ProcurementDataController extends Controller
         // If there's an Excel file, you would handle it here
         if ($request->hasFile('excel_file')) {
             // TODO: Handle the Excel file
+
+            dd($request->file('excel_file'));
         }
 
         // Create a new ProcurementData record with the validated data
@@ -61,6 +63,11 @@ class ProcurementDataController extends Controller
         return view('procurement.show', compact('procurement'));
     }
 
+    public function visualize(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        $procurements = ProcurementData::all();
+        return view('procurement.visualize', compact('procurements'));
+    }
 
     // ...
 }
