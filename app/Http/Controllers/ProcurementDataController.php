@@ -9,15 +9,14 @@ use Illuminate\Http\Request;
 
 class ProcurementDataController extends Controller
 {
-    // ...
-    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function create()
     {
         $categories = Category::all();
         $spendCategories = SpendCategory::all();
         return view('procurement.create', compact('categories', 'spendCategories'));
     }
 
-    public function store(Request $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
+    public function store(Request $request)
     {
         // Validate incoming request data
         $data = $request->validate([
@@ -36,8 +35,6 @@ class ProcurementDataController extends Controller
             'excel_file' => 'nullable|file|mimes:xlsx',
         ]);
 
-
-        //dd($data);
         // If 'directors' is a string, convert it to an array
         if (is_string($data['directors'])) {
             $data['directors'] = explode("\n", $data['directors']);
@@ -46,7 +43,6 @@ class ProcurementDataController extends Controller
         // If there's an Excel file, you would handle it here
         if ($request->hasFile('excel_file')) {
             // TODO: Handle the Excel file
-
             dd($request->file('excel_file'));
         }
 
@@ -57,17 +53,19 @@ class ProcurementDataController extends Controller
         return redirect('/procurement/success');
     }
 
-
-    public function show(ProcurementData $procurement): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function show(ProcurementData $procurement)
     {
         return view('procurement.show', compact('procurement'));
     }
 
-    public function visualize(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function visualize()
     {
         $procurements = ProcurementData::all();
-        return view('procurement.visualize', compact('procurements'));
-    }
 
-    // ...
+        // Prepare data for the chart
+        $labels = $procurements->pluck('firm_name');
+        $amounts = $procurements->pluck('amount');
+
+        return view('procurement.visualize', compact('labels', 'amounts'));
+    }
 }

@@ -13,6 +13,8 @@
     @endforeach
 </table>
 
+@endsection
 
-
+@section('content')
+    <canvas id="procurementChart" width="400" height="400"></canvas>
 @endsection
