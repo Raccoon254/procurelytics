@@ -33,14 +33,14 @@
             <a class="flex gap-2 items-center hover:bg-accent p-2 rounded w-full bg-gray-200" href="{{ route('procurement.create') }}" >
                 <i class="fa-solid fa-file-arrow-up"></i>
                 <div class="">
-                    visualize
+                    Visualize
                 </div>
             </a>
 
             <a class="flex gap-2 items-center hover:bg-accent p-2 rounded w-full bg-gray-200" href="{{ route('procurement.create') }}" >
                 <i class="fa-solid fa-file-arrow-up"></i>
                 <div class="">
-                    Create Procurement
+                    All Procurements
                 </div>
             </a>
 
