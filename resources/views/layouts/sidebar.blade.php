@@ -17,23 +17,23 @@
             </a>
 
             <a class="flex gap-2 items-center hover:bg-accent p-2 rounded w-full bg-gray-200" href="{{ route('categories.index') }}" >
-                <i class="fa-solid fa-file-arrow-up"></i>
+                <i class="fa-solid fa-clipboard-list"></i>
                 <div class="">
-                    categories
+                    Categories
                 </div>
             </a>
 
             <a class="flex gap-2 items-center hover:bg-accent p-2 rounded w-full bg-gray-200" href="{{ route('procurement.create') }}" >
                 <i class="fa-solid fa-file-arrow-up"></i>
                 <div class="">
-                    Create Procurement
+                    Spend Categories
                 </div>
             </a>
 
             <a class="flex gap-2 items-center hover:bg-accent p-2 rounded w-full bg-gray-200" href="{{ route('procurement.create') }}" >
                 <i class="fa-solid fa-file-arrow-up"></i>
                 <div class="">
-                    Create Procurement
+                    visualize
                 </div>
             </a>
 
@@ -55,12 +55,6 @@
             </button>
             <button class="btn btn-gost mb-2 w-full">
                 <a href="{{ route('spend.index') }}" >Spend Categories</a>
-            </button>
-            <button class="btn btn-gost mb-2 w-full">
-                <a href="{{ route('procurement.success') }}" >Procurement Success</a>
-            </button>
-            <button class="btn btn-gost mb-2 w-full">
-                <a href="{{ route('procurement-data') }}" >Procurement Data</a>
             </button>
             <button class="btn btn-gost mb-2 w-full">
                 <a href="{{ route('visualize') }}" >Visualize</a>
