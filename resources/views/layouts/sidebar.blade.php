@@ -5,29 +5,29 @@
     </div>
     <div class="z-40 drawer-side">
         <label for="my-drawer" class="drawer-overlay"></label>
-        <ul class="menu p-4 w-64 h-full bg-base-200 text-base-content flex flex-col justify-center items-center">
+        <div class="menu p-4 w-64 h-full bg-base-200 text-base-content flex flex-col justify-center items-start">
             <!-- Sidebar content here -->
-            <li>
-                <a href="{{ route('procurement.create') }}" class="btn btn-primary mb-4">Create Procurement</a>
-            </li>
-            <li>
-                <a href="{{ route('categories.index') }}" class="btn btn-primary mb-4">Categories</a>
-            </li>
-            <li>
-                <a href="{{ route('spend.index') }}" class="btn btn-primary mb-4">Spend Categories</a>
-            </li>
-            <li>
-                <a href="{{ route('procurement.success') }}" class="btn btn-primary mb-4">Procurement Success</a>
-            </li>
-            <li>
-                <a href="{{ route('procurement-data') }}" class="btn btn-primary mb-4">Procurement Data</a>
-            </li>
-            <li>
-                <a href="{{ route('visualize') }}" class="btn btn-primary mb-4">Visualize</a>
-            </li>
-            <li>
-                <a href="{{ route('procurement.show', ['procurement' => 'procurement_id']) }}" class="btn btn-primary mb-4">Show Procurement</a>
-            </li>
-        </ul>
+            <button class="btn btn-primary mb-4">
+                <a href="{{ route('procurement.create') }}" >Create Procurement</a> 
+            </button>
+            <button class="btn btn-primary mb-4">
+                <a href="{{ route('categories.index') }}" >Categories</a>
+            </button>
+            <button class="btn btn-primary mb-4">
+                <a href="{{ route('spend.index') }}" >Spend Categories</a>
+            </button>
+            <button class="btn btn-primary mb-4">
+                <a href="{{ route('procurement.success') }}" >Procurement Success</a>
+            </button>
+            <button class="btn btn-primary mb-4">
+                <a href="{{ route('procurement-data') }}" >Procurement Data</a>
+            </button>
+            <button class="btn btn-primary mb-4">
+                <a href="{{ route('visualize') }}" >Visualize</a>
+            </button>
+            <button class="btn btn-primary mb-4" >
+                <a href="{{ route('procurement.show', ['procurement' => 'procurement_id']) }}" >Show Procurement</a>
+            </button>
+        </div>
     </div>
 </div>
