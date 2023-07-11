@@ -5,5 +5,6 @@
 @section('content')
 
     home page
+    Data about the Project
 
 @endsection

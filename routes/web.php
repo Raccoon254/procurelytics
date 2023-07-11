@@ -38,6 +38,9 @@ Route::get('/procurement/', function () {
     return view('procurement.index');
 })->name('procurement-data');
 
+Route::post('/procurement/confirm-upload', [ProcurementDataController::class,'confirmUpload'])
+    ->name('procurement.confirm-upload');
+
 Route::get('/visualize', [ProcurementDataController::class, 'visualize'])->name('visualize');
 
 Route::get('/procurement/{procurement}', [ProcurementDataController::class, 'show'])->name('procurement.show');
