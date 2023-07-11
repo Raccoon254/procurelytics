@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="z-50">
+        @include('layouts.sidebar')
+    </div>
+
     <div class="px-4 py-5 my-5 text-center">
         <h1 class="display-5 text-2xl fw-bold">{{ $procurement->firm_name }}&nbsp;{{ $procurement->created_at->diffForHumans() }}</h1>
     </div>
@@ -12,7 +16,7 @@
                     <i class="fas fa-certificate text-blue-500 text-2xl"></i>
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title">Certificate Number</h2>
+                    <p class="z-30 card-title">Certificate Number</p>
                     <p>{{ $procurement->certificate_number }}</p>
                 </div>
             </div>
@@ -22,7 +26,7 @@
                     <i class="fas fa-id-badge text-green-500 text-2xl"></i>
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title">AGPO Cert. No.</h2>
+                    <p class="z-30 card-title">AGPO Cert. No.</p>
                     <p>{{ $procurement->agpo_cert_no }}</p>
                 </div>
             </div>
@@ -32,7 +36,7 @@
                     <i class="fas fa-tags text-red-500 text-2xl"></i>
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title">Category</h2>
+                    <p class="z-30 card-title">Category</p>
                     <p>{{ $procurement->category->name }}</p>
                 </div>
             </div>
@@ -42,7 +46,7 @@
                     <i class="fas fa-user-tie text-purple-500 text-2xl"></i>
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title">Directors</h2>
+                    <p class="z-30 card-title">Directors</p>
                     @foreach($procurement->directors as $director)
                         <p>{{ $director }}</p>
                     @endforeach
@@ -54,7 +58,7 @@
                     <i class="fas fa-envelope text-yellow-500 text-2xl"></i>
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title">Email</h2>
+                    <p class="z-30 card-title">Email</p>
                     <p>{{ $procurement->email }}</p>
                 </div>
             </div>
@@ -64,7 +68,7 @@
                     <i class="fas fa-phone text-indigo-500 text-2xl"></i>
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title">Mobile Number</h2>
+                    <p class="z-30 card-title">Mobile Number</p>
                     <p>{{ $procurement->mobile_number }}</p>
                 </div>
             </div>
@@ -74,7 +78,7 @@
                     <i class="fas fa-dollar-sign text-green-500 text-2xl"></i>
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title">Amount</h2>
+                    <p class="z-30 card-title">Amount</p>
                     <p>{{ $procurement->amount }}</p>
                 </div>
             </div>
@@ -84,7 +88,7 @@
                     <i class="fas fa-shopping-cart text-pink-500 text-2xl"></i>
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title">Procurement Number</h2>
+                    <p class="z-30 card-title">Procurement Number</p>
                     <p>{{ $procurement->procurement_number }}</p>
                 </div>
             </div>
@@ -94,7 +98,7 @@
                     <i class="fas fa-handshake text-blue-500 text-2xl"></i>
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title">Procurement Method</h2>
+                    <p class="z-30 card-title">Procurement Method</p>
                     <p>{{ $procurement->procurement_method }}</p>
                 </div>
             </div>
