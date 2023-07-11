@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\ProcurementData;
 use App\Models\SpendCategory;
+use Exception;
 use Illuminate\Http\Request;
 
 class ProcurementDataController extends Controller
@@ -90,9 +91,38 @@ class ProcurementDataController extends Controller
 
             if (!empty($rowsWithMissingInfo)) {
                 return view('procurement.missing-info', ['rowsWithMissingInfo' => $rowsWithMissingInfo, 'requiredFields' => $requiredFields, 'rowsWithFullInfo' => $rowsWithFullInfo]);
-            }
+            } else {
+                // Map the keys to the column names in the database
+                $keyMapping = [
+                    'FIRM NAME' => 'firm_name',
+                    'CERTIFICATE NO' => 'certificate_number',
+                    'AGPO CERT NO' => 'agpo_cert_no',
+                    'CATEGORY' => 'category_id',
+                    'DIRECTORS' => 'directors',
+                    'ADDRESS' => 'postal_address',
+                    'EMAIL' => 'email',
+                    'CONTACT' => 'mobile_number',
+                    'AMOUNT' => 'amount',
+                    'SPEND CATEGORY' => 'spend_category_id',
+                    'METHOD OF PROCUREMENT' => 'procurement_method',
+                    'PROCUREMENT NUMBER' => 'procurement_number',
+                ];
 
-            //dd('Rows with full info:', $rowsWithFullInfo, 'Rows with missing info:', $rowsWithMissingInfo);
+                $rowsWithFullInfoPrev = $rowsWithFullInfo;
+
+                // Transform the keys of each row in $rowsWithFullInfo according to $keyMapping
+                $rowsWithFullInfo = array_map(function ($row) use ($keyMapping) {
+                    return array_combine(
+                        array_map(function ($key) use ($keyMapping) {
+                            return $keyMapping[$key] ?? $key;
+                        }, array_keys($row)),
+                        $row
+                    );
+                }, $rowsWithFullInfo);
+
+                session(['rowsWithFullInfo' => $rowsWithFullInfo]);
+                return view('procurement.confirm', ['rowsWithFullInfo' => $rowsWithFullInfoPrev]);
+            }
 
             // TODO: Handle the Excel file processing and saving the data into the database
         } else {
@@ -123,6 +153,46 @@ class ProcurementDataController extends Controller
             return redirect('/procurement/success');
         }
     }
+
+    /**
+     * @throws Exception
+     */
+    public function confirmUpload(Request $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
+    {
+        $rowsWithFullInfo = session('rowsWithFullInfo', []);
+
+        // Process the rows with full info and create ProcurementData models
+        foreach ($rowsWithFullInfo as &$row) {
+            // Fetch the category from the database that matches the name in the row data
+            $category = Category::where('name', $row['category_id'])->first();
+            $spendCategory = SpendCategory::where('name', $row['spend_category_id'])->first();
+
+            if ($category && $spendCategory) {
+                // If both the category and spend category were found, replace the names with the IDs in the row data
+                $row['category_id'] = $category->id;
+                $row['spend_category_id'] = $spendCategory->id;
+            } else {
+                // If either category was not found, you need to handle this case. Here's a simple example:
+                if(!$category) {
+                    throw new Exception("Category '{$row['category_id']}' not found.");
+                }
+                if(!$spendCategory) {
+                    throw new Exception("Spend Category '{$row['spend_category_id']}' not found.");
+                }
+            }
+
+            // Create ProcurementData record
+            ProcurementData::create($row);
+        }
+        unset($row); // Unset reference to keep code safe outside loop.
+
+        // Clear the session
+        $request->session()->forget('rowsWithFullInfo');
+
+        // Redirect to a success page
+        return redirect('/procurement/success');
+    }
+
 
     public function show(ProcurementData $procurement): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
