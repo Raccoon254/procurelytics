@@ -5,7 +5,7 @@
     </div>
     <div class="z-40 drawer-side">
         <label for="my-drawer" class="drawer-overlay"></label>
-        <div class="menu p-4 w-64 h-full bg-base-200 text-base-content flex flex-col justify-center items-start">
+        <div class="menu p-4 w-64 h-full bg-base-200 text-base-content gap-4 flex flex-col justify-center items-start">
             <!-- Sidebar content here -->
 
 
