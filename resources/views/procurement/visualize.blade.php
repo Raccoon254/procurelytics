@@ -53,6 +53,13 @@
             chart: {
                 type: 'line'
             },
+            stroke: {
+                show: true,
+                lineCap: 'butt',
+                colors: undefined,
+                width: 2,
+                dashArray: 0,
+            },
             series: [{
                 name: 'Amount',
                 data: [@foreach($procurements as $proc) {{ $proc->amount }}, @endforeach]

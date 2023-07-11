@@ -3,7 +3,7 @@
     <div class="drawer-content">
         <!-- Page content here -->
     </div>
-    <div class="z-50 drawer-side">
+    <div class="z-40 drawer-side">
         <label for="my-drawer" class="drawer-overlay"></label>
         <ul class="menu p-4 w-64 h-full bg-base-200 text-base-content flex flex-col justify-center items-center">
             <!-- Sidebar content here -->
