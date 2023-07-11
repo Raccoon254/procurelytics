@@ -23,45 +23,26 @@
                 </div>
             </a>
 
-            <a class="flex gap-2 items-center hover:bg-accent p-2 rounded w-full bg-gray-200" href="{{ route('procurement.create') }}" >
+            <a class="flex gap-2 items-center hover:bg-accent p-2 rounded w-full bg-gray-200" href="{{ route('spend.index') }}" >
                 <i class="fa-solid fa-file-arrow-up"></i>
                 <div class="">
                     Spend Categories
                 </div>
             </a>
 
-            <a class="flex gap-2 items-center hover:bg-accent p-2 rounded w-full bg-gray-200" href="{{ route('procurement.create') }}" >
-                <i class="fa-solid fa-file-arrow-up"></i>
+            <a class="flex gap-2 items-center hover:bg-accent p-2 rounded w-full bg-gray-200" href="{{ route('visualize') }}" >
+                <i class="fa-solid fa-mountain"></i>
                 <div class="">
                     Visualize
                 </div>
             </a>
 
-            <a class="flex gap-2 items-center hover:bg-accent p-2 rounded w-full bg-gray-200" href="{{ route('procurement.create') }}" >
-                <i class="fa-solid fa-file-arrow-up"></i>
+            <a class="flex gap-2 items-center hover:bg-accent p-2 rounded w-full bg-gray-200" href="{{ route('procurement-data') }}" >
+                <i class="fa-solid fa-bag-shopping"></i>
                 <div class="">
                     All Procurements
                 </div>
             </a>
-
-            <a class="flex gap-2 items-center hover:bg-accent p-2 rounded w-full bg-gray-200" href="{{ route('procurement.create') }}" >
-                <i class="fa-solid fa-file-arrow-up"></i>
-                <div class="">
-                    Create Procurement
-                </div>
-            </a>
-            <button class="btn btn-gost mb-2 w-full">
-                <a href="{{ route('categories.index') }}" >Categories</a>
-            </button>
-            <button class="btn btn-gost mb-2 w-full">
-                <a href="{{ route('spend.index') }}" >Spend Categories</a>
-            </button>
-            <button class="btn btn-gost mb-2 w-full">
-                <a href="{{ route('visualize') }}" >Visualize</a>
-            </button>
-            <button class="btn btn-gost mb-2 w-full" >
-                <a href="{{ route('procurement.show', ['procurement' => 'procurement_id']) }}" >Show Procurement</a>
-            </button>
         </div>
     </div>
 </div>
