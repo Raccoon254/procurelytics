@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="z-50">
-        @include('layouts.sidebar')
-    </div>
 
     <div class="px-4 py-5 my-5 text-center">
         <h1 class="display-5 text-2xl fw-bold">{{ $procurement->firm_name }}&nbsp;{{ $procurement->created_at->diffForHumans() }}</h1>
