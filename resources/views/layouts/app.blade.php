@@ -1,4 +1,4 @@
-<html lang="">
+<html data-theme="cupcake" lang="">
     <head>
         <title>@yield('title')</title>
         <script src="https://kit.fontawesome.com/af6aba113a.js" crossorigin="anonymous"></script>
